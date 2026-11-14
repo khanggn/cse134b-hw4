@@ -773,6 +773,21 @@ nav[aria-label="Playlists"] a:hover {
     border-color: var(--color-heading);
 }
 
+.contact label span {
+    color: #F87171;
+}
+
+.contact input:user-valid,
+.contact textarea:user-valid {
+    border-color: #4ADE80;
+}
+
+.contact input:user-invalid,
+.contact textarea:user-invalid {
+    border-color: #F87171;
+    box-shadow: 0 0 0 1px #F87171;
+}
+
 /* 404 PAGE */
 .not-found {
     display: grid;
