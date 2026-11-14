@@ -788,6 +788,55 @@ nav[aria-label="Playlists"] a:hover {
     box-shadow: 0 0 0 1px #F87171;
 }
 
+[hidden] {
+    display: none !important;
+}
+
+.form-messages {
+    padding: 1rem 1.25rem;
+    border-radius: calc(var(--radius) / 2);
+    border-left: 4px solid;
+}
+
+.form-messages p {
+    margin: 0;
+}
+
+.form-messages--error {
+    border-left-color: #F87171;
+    background-color: rgba(248, 113, 113, 0.1);
+}
+
+.form-messages--error p:first-child strong {
+    color: #F87171;
+}
+
+.form-messages--error p + p {
+    margin-top: 0.5rem;
+}
+
+.form-messages--info {
+    border-left-color: var(--color-accent);
+    background-color: rgba(196, 181, 253, 0.1);
+}
+
+.form-messages--info strong {
+    color: var(--color-accent);
+}
+
+.form-messages--warning {
+    border-left-color: #FBBF24;
+    background-color: rgba(251, 191, 36, 0.15);
+}
+
+.form-messages--warning strong {
+    color: #FBBF24;
+}
+
+#char-warning {
+    font-weight: 600;
+}
+
 /* 404 PAGE */
 .not-found {
     display: grid;
