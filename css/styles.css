@@ -20,9 +20,41 @@
     --page-padding: 1.5rem;
 
     --color-surface: #303030;
+    --color-border: rgba(255, 255, 255, 0.1);
+    --color-error: #F87171;
+    --color-success: #4ADE80;
+    --color-warning: #FBBF24;
+    --color-control-border: rgba(255, 255, 255, 0.45);
     --radius: 1rem;
 
 }
+
+:root[data-theme="light"] {
+    --color-bg: #F5F5F4;
+    --color-text: #1C1917;
+    --color-heading: #0C0A09;
+    --color-accent: #7C3AED;
+    --color-muted: #D6D3D1;
+    --color-surface: #FFFFFF;
+    --color-border: rgba(0, 0, 0, 0.1);
+    --color-error: #B91C1C;
+    --color-success: #15803D;
+    --color-warning: #B45309;
+    --color-control-border: rgba(0, 0, 0, 0.45);
+}
+
+@view-transition {
+    navigation: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+        animation-duration: 0s !important;
+    }
+}
+
 /* Styling General elements */
 body {
     font-family: var(--font-body);
@@ -60,7 +92,7 @@ body > header {
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--color-border);
     flex-wrap: wrap;
 }
 
@@ -77,6 +109,10 @@ header > a {
     white-space: nowrap;
 }
 
+body > header nav {
+    margin-left: auto;
+}
+
 nav ul {
     display: flex;
     flex-wrap: wrap;
@@ -89,6 +125,26 @@ nav ul {
 nav a {
     color: var(--color-heading);
     text-decoration: none;
+}
+
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    color: var(--color-heading);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.theme-toggle:hover {
+    background: var(--color-accent);
+    color: var(--color-bg);
+    border-color: var(--color-accent);
 }
 
 nav a:hover {
@@ -193,7 +249,7 @@ track-card > article {
     flex-direction: column;
     padding: 1.25rem;
     background-color: var(--color-surface);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--color-border);
     border-radius: var(--radius);
 }
 
@@ -239,7 +295,7 @@ track-card span, .records article > span {
     flex-direction: column;
     padding: 1.25rem;
     background-color: var(--color-surface);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--color-border);
     border-radius: var(--radius);
 }
 
@@ -282,7 +338,7 @@ body > footer {
     gap: 1.5rem;
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid var(--color-border);
 }
 
 body > footer b {
@@ -343,7 +399,7 @@ nav[aria-label="Playlists"] a:hover {
     display: grid;
     gap: 1rem;
     padding-block: 2.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid var(--color-border);
 }
 
 /* Child combinator: the playlist cover image */
@@ -374,7 +430,7 @@ nav[aria-label="Playlists"] a:hover {
     align-items: center;
     gap: 1rem;
     padding-block: 0.75rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--color-border);
 }
 
 .playlist li img {
@@ -477,7 +533,7 @@ nav[aria-label="Playlists"] a:hover {
     align-items: center;
     gap: 0.5rem 1rem;
     padding-block: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--color-border);
 }
 
 .top-artists li::before {
@@ -515,7 +571,7 @@ nav[aria-label="Playlists"] a:hover {
 
 .on-repeat li {
     padding-block: 0.75rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--color-border);
 }
 
 .on-repeat li::marker {
@@ -580,7 +636,7 @@ nav[aria-label="Playlists"] a:hover {
 .case-study > nav {
     padding: 1.25rem;
     background-color: var(--color-surface);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--color-border);
     border-radius: var(--radius);
 }
 
@@ -602,7 +658,7 @@ nav[aria-label="Playlists"] a:hover {
 
 .case-study section {
     padding-block: 2.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--color-border);
 }
 
 .case-study section p,
@@ -650,7 +706,7 @@ nav[aria-label="Playlists"] a:hover {
 .hobbies article {
     padding: 1.25rem;
     background-color: var(--color-surface);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--color-border);
     border-radius: var(--radius);
 }
 
@@ -715,7 +771,7 @@ nav[aria-label="Playlists"] a:hover {
 
 .contact section li {
     padding-block: 0.75rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--color-border);
 }
 
 .contact section li a {
@@ -729,7 +785,7 @@ nav[aria-label="Playlists"] a:hover {
     margin: 0;
     padding: 1.5rem;
     background-color: var(--color-surface);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--color-border);
     border-radius: var(--radius);
 }
 
@@ -752,7 +808,7 @@ nav[aria-label="Playlists"] a:hover {
     font: inherit;
     color: var(--color-text);
     background-color: var(--color-bg);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--color-control-border);
     border-radius: calc(var(--radius) / 2);
 }
 
@@ -774,18 +830,18 @@ nav[aria-label="Playlists"] a:hover {
 }
 
 .contact label span {
-    color: #F87171;
+    color: var(--color-error);
 }
 
 .contact input:user-valid,
 .contact textarea:user-valid {
-    border-color: #4ADE80;
+    border-color: var(--color-success);
 }
 
 .contact input:user-invalid,
 .contact textarea:user-invalid {
-    border-color: #F87171;
-    box-shadow: 0 0 0 1px #F87171;
+    border-color: var(--color-error);
+    box-shadow: 0 0 0 1px var(--color-error);
 }
 
 [hidden] {
@@ -803,12 +859,12 @@ nav[aria-label="Playlists"] a:hover {
 }
 
 .form-messages--error {
-    border-left-color: #F87171;
-    background-color: rgba(248, 113, 113, 0.1);
+    border-left-color: var(--color-error);
+    background-color: color-mix(in srgb, var(--color-error) 12%, transparent);
 }
 
 .form-messages--error p:first-child strong {
-    color: #F87171;
+    color: var(--color-error);
 }
 
 .form-messages--error p + p {
@@ -817,7 +873,7 @@ nav[aria-label="Playlists"] a:hover {
 
 .form-messages--info {
     border-left-color: var(--color-accent);
-    background-color: rgba(196, 181, 253, 0.1);
+    background-color: color-mix(in srgb, var(--color-accent) 12%, transparent);
 }
 
 .form-messages--info strong {
@@ -825,12 +881,12 @@ nav[aria-label="Playlists"] a:hover {
 }
 
 .form-messages--warning {
-    border-left-color: #FBBF24;
-    background-color: rgba(251, 191, 36, 0.15);
+    border-left-color: var(--color-warning);
+    background-color: color-mix(in srgb, var(--color-warning) 15%, transparent);
 }
 
 .form-messages--warning strong {
-    color: #FBBF24;
+    color: var(--color-warning);
 }
 
 #char-warning {
